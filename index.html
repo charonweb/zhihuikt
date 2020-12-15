@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="fonts/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+	</head>
+	<style type="text/css">
+		.container {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.header {
+			height: 80px;
+			background: #358DE8;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			box-sizing: border-box;
+			padding: 0 20px;
+			color: #fff;
+			font-size: 30px;
+		}
+
+		.content {
+			flex: 1;
+			display: flex;
+			box-sizing: border-box;
+		}
+
+		.footer {
+			height: 80px;
+			border-top: 1px solid #dadada;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.footer_btn {
+			width: 182px;
+			height: 48px;
+			background: #E4F0FF;
+			border: 1px solid #3699FF;
+			opacity: 1;
+			border-radius: 4px;
+			margin: 0 20px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #3699FF;
+			font-size: 20px;
+			cursor: pointer;
+		}
+
+		.p_tips {
+			font-size: 14px;
+			color: #FE5959;
+			text-align: right;
+			margin: 15px 15px 15px 0;
+		}
+		.p_title{
+			color: #303753;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+		}
+		.student_list{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			box-sizing: border-box;
+			padding: 20px;
+		}
+		.student_box{
+			width: 128px;
+			height: 48px;
+			line-height: 48px;
+			text-align: center;
+			font-size: 20px;
+			border-radius: 4px;
+			border: 1px solid #DADADA;
+			color: #B3B9C7;
+			margin: 5px;
+		}
+		.student_selected{
+          background: #3699FF;
+		  color: #fff;
+		}
+		.tijiao_box{
+			width: 350px;
+			height: 168px;
+			margin: 0 30px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			box-sizing: border-box;
+			padding: 40px;
+			color: #fff;
+		}
+		.tijiaonum_box{
+			background: url(img/jindu_bg.png);
+		}
+		.tijiaomin_box{
+			background: url(img/yongshi_bg.png);
+		}
+		.tijiao_box_container{
+			margin-top: 40px;
+			display: flex;
+			justify-content: center;
+		}
+		.tijiao_txt1{
+			font-size: 30px;
+		}
+		.tijiao_txt2 span:nth-of-type(1){
+			font-size: 28px;
+			font-weight: bold;
+		}
+		.tijiao_txt3 span:nth-child(odd){
+			font-size: 28px;
+		}
+	</style>
+	<body>
+		<div id="app" class="wrapper-ab">
+			<div class="container">
+				<div class="header">
+					<img src="./img/icon-left.png">
+					<span>学生答题</span>
+					<i></i>
+				</div>
+				<div class="content">
+					<div class="content_l" style="flex: 1;border-right: 1px solid #dadada;">
+						<p class="p_tips">提示：亮起代表已提交</p>
+						<p class="p_title">提交名单</p>
+						<ul class="student_list">
+							<li class="student_box" :class="item.select?'student_selected':''"  v-for="(item,index) in studentList" :key='index'>{{item.name}}</li>
+						</ul>
+					</div>
+					<div class="content_r" style="flex: 1;">
+						<div class="tijiao_box_container">
+							
+						
+						<div class="tijiaonum_box tijiao_box">
+							<p class="tijiao_txt1">提交进度</p>
+							<p class="tijiao_txt2"><span>20</span><span>/45人</span></p>
+						</div>
+						<div class="tijiaomin_box tijiao_box">
+							<p class="tijiao_txt1">已用时</p>
+							<p class="tijiao_txt3"><span>1</span><span>min</span><span>30</span><span>s</span></p>
+						</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer">
+					<div class="end_btn footer_btn">
+						<img src="img/icon-close.png"><span>结束答题</span>
+					</div>
+					<div class="close_btn footer_btn">
+						<img src="img/icon-shouqi.png"><span>最小化</span>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</body>
+	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="plugs/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: "#app",
+			data: {
+				studentList:[
+					{name:"小明",select:true,id:1},
+					{name:"小明",select:true,id:1},
+					{name:"小明",select:true,id:1},
+					{name:"小明",select:false,id:1},
+					{name:"小明",select:true,id:1},
+					{name:"小明",select:true,id:1},
+					{name:"小明",select:false,id:1},
+					{name:"小明",select:true,id:1},
+					{name:"小明",select:false,id:1},
+					{name:"小明",select:true,id:1},
+					{name:"小明",select:false,id:1},
+					{name:"小明",select:true,id:1},
+					{name:"小明",select:true,id:1},
+					{name:"小明",select:true,id:1},
+					{name:"小明",select:true,id:1},
+					{name:"小明",select:true,id:1},
+					{name:"小明",select:false,id:1},
+					{name:"小明",select:true,id:1},
+					{name:"小明",select:true,id:1},
+					{name:"小明",select:false,id:1},
+					{name:"小明",select:true,id:1},
+					{name:"小明",select:false,id:1},
+					{name:"小明",select:true,id:1},
+					{name:"小明",select:false,id:1},
+					{name:"小明",select:true,id:1},
+					]
+			}
+		})
+	</script>
+</html>
