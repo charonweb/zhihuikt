@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="fonts/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+	</head>
+	<style type="text/css">
+		.container {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.header {
+			height: 80px;
+			background: #358DE8;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			box-sizing: border-box;
+			padding: 0 20px;
+			color: #fff;
+			font-size: 30px;
+		}
+
+		.content {
+			flex: 1;
+			display: flex;
+			box-sizing: border-box;
+			flex-direction: column;
+		}
+
+		.footer {
+			height: 80px;
+			border-top: 1px solid #dadada;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.footer_box{
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			box-sizing: border-box;
+			padding: 0 30px;
+		}
+		.footer_btn {
+			width: 182px;
+			height: 48px;
+			background: #E4F0FF;
+			border: 1px solid #3699FF;
+			opacity: 1;
+			border-radius: 4px;
+			margin: 0 20px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #3699FF;
+			font-size: 20px;
+			cursor: pointer;
+		}
+
+		.edit_box {
+			box-sizing: border-box;
+			padding: 30px;
+		}
+		.list_box{
+			flex:1;
+			overflow: auto;
+			height: 0;
+			box-sizing: border-box;
+			padding: 0 50px;
+			display: flex;
+		}
+		.list_box_riqi{
+			display: flex;
+			align-items: center;
+			font-size: 30px;
+			color: #303753;
+		}
+		.list_box_zhuti{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			box-sizing: border-box;
+			padding: 30px 0;
+		}
+		.img_box{
+			width: 262px;
+			height: 162px;
+			border-radius: 18px;
+			margin-right: 20px;
+		}
+		.time_box{
+			height: 162px;
+			display: flex;
+			flex-direction: column;
+			box-sizing: border-box;
+			padding: 40px 0;
+			justify-content: space-between;
+		}
+		.time_box p:nth-child(1){
+			font-size: 28px;
+			color: #000;
+			/* font-weight: bold; */
+		}
+		.time_box p:nth-child(2){
+			font-size: 22px;
+			color: #767E91;
+		}
+		.list_box_left{
+			display: flex;
+			align-items: center;
+			position: relative;
+		}
+		.check_i{
+			position: absolute;
+			font-size: 42px;
+			color:rgba(53,141,212,.5);
+			left:-50px;
+			cursor: pointer;
+		}
+		.check_i_checked{
+			color:#358DE8;
+			left:-50px;
+			position: absolute;
+			font-size: 42px;
+			cursor: pointer;
+		}
+		.list_box_content .list_box_zhuti:nth-of-type(n+3){
+			border-top: 1px solid #dadada;
+		}
+		.el-button--goon.is-active,
+		.el-button--goon:active {
+		  background: #20B2AA;
+		  border-color: #20B2AA;
+		  color: #fff;
+		}
+		
+		.el-button--goon:focus,
+		.el-button--goon:hover {
+		  background: #48D1CC;
+		  border-color: #48D1CC;
+		  color: #fff;
+		}
+		
+		.el-button--goon {
+		  color: #FFF;
+		  background-color: #20B2AA;
+		  border-color: #20B2AA;
+		}
+		.is_edit{
+			margin-left: 50px;
+		}
+	</style>
+	<body>
+		<div id="app" class="wrapper-ab">
+			<div class="container">
+				<div class="header">
+					<img src="./img/icon-left.png">
+					<span>云端草稿</span>
+					<i></i>
+				</div>
+				<div class="content">
+					<div class="edit_box">
+						<div>
+							<el-button type="primary" icon="el-icon-plus" style='margin-right: 40px;width: 172px;height: 48px;'>新建互动</el-button>
+							<el-button @click='showFooter=!showFooter' type="primary" icon="el-icon-edit" style='margin-right: 40px;width: 132px;height: 48px;' plain >编辑</el-button>
+						</div>
+						<!-- <el-input placeholder="请输入内容" v-model="input3" class="input-with-select">
+						 
+						    <el-button slot="append" icon="el-icon-search"></el-button>
+						  </el-input> -->
+					</div>
+					<div class="list_box">
+						<div style="height: 100%;width: 100%;">
+							<div class="list_box_content" v-for="(item,index) in caogaoList" :key="index">
+								<div class="list_box_riqi">
+									<img style="width: 48px;margin-right: 10px;" src="img/icon-rili.png" >{{item.date}}
+								</div>
+								
+								<div class="list_box_zhuti" v-for="(v,index1) in item.list" :key='index'>
+									<el-collapse-transition>
+									<div class="list_box_left" :class="showFooter?'is_edit':''">
+										<i class="el-icon-success" v-show="showFooter" :class="v.checked?'check_i_checked':'check_i'" @click="v.checked=!v.checked"></i>
+										<div class="img_box">
+											<img style="width: 100%;height: 100%;" src="./img/imglist.png" >
+										</div>
+										<div class="time_box">
+											<p>{{item.title}}</p>
+											<p>{{item.time}}</p>
+										</div>
+									</div>
+									</el-collapse-transition>
+									<div class="list_box_right">
+										  <el-button type="goon" style='width: 122px;height: 51px;'>预览</el-button>
+										  <el-button type="primary" style='width: 170px;height: 51px;'>发布习题</el-button>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer" v-show="showFooter">
+					<div class="footer_box">
+						<el-button type="primary" plain style='width: 102px;height: 48px;'>取消</el-button>
+						<el-button type="primary" style='width: 102px;height: 48px;' @click='delet'>删除</el-button>
+					</div>
+				</div>
+			</div>
+	</body>
+</html>
+<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="plugs/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script type="text/javascript">
+	var app = new Vue({
+		el: '#app',
+		data: {
+			input3:'',
+			showFooter: false,
+			caogaoList: [{
+				date: '2020年12月',
+				list: [{
+					checked:false,
+					img: 'img/imglist',
+					title: '课堂提问12011057',
+					time: '2020-12-01  10:57'
+				}, {
+					checked:false,
+					img: 'img/imglist',
+					title: '课堂提问12011057',
+					time: '2020-12-01  10:57'
+				}]
+
+			}, {
+				date: '2020年12月',
+				list: [{
+					checked:false,
+					img: 'img/imglist',
+					title: '课堂提问12011057',
+					time: '2020-12-01  10:57'
+				}, ]
+
+			},
+			{
+				date: '2020年12月',
+				list: [{
+					checked:false,
+					img: 'img/imglist',
+					title: '课堂提问12011057',
+					time: '2020-12-01  10:57'
+				}, {
+					checked:false,
+					img: 'img/imglist',
+					title: '课堂提问12011057',
+					time: '2020-12-01  10:57'
+				}]
+			
+			}]
+		},
+		methods:{
+			delet(){
+				layer.confirm("删除后，互动将无法恢复，确定删除吗？",{
+				                    btn:["确定","取消"]
+				                },function(){
+									
+								})
+			}
+		}
+	})
+</script>

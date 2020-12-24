@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="fonts/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+	</head>
+	<style>
+		.container {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+		
+		.header {
+			height: 80px;
+			background: #358DE8;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			box-sizing: border-box;
+			padding: 0 20px;
+			color: #fff;
+			font-size: 30px;
+		}
+		
+		.content {
+			flex: 1;
+			display: flex;
+			box-sizing: border-box;
+		}
+		
+		.footer {
+			height: 80px;
+			border-top: 1px solid #dadada;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.footer_btn {
+			width: 182px;
+			height: 48px;
+			background: #E4F0FF;
+			border: 1px solid #3699FF;
+			opacity: 1;
+			border-radius: 4px;
+			margin: 0 20px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #3699FF;
+			font-size: 20px;
+			cursor: pointer;
+		}
+		.content_l{flex: 1;}
+		.content_r{flex: 1;
+		box-sizing: border-box;
+		padding: 0 20px;
+		display: flex;
+		flex-direction: column;
+		 }
+		  
+		  
+		  .swiper_box{
+			  margin-top: 100px ;
+		  }
+		  .tijiao_box{
+		  	width: 350px;
+		  	height: 168px;
+		  	margin: 0 30px;
+		  	display: flex;
+		  	flex-direction: column;
+		  	justify-content: space-between;
+		  	box-sizing: border-box;
+		  	padding: 40px;
+		  	color: #fff;
+		  }
+		  .tijiaonum_box{
+		  	background: url(img/jindu_bg.png);
+		  }
+		  .tijiaomin_box{
+		  	background: url(img/yongshi_bg.png);
+		  }
+		  .tijiao_box_container{
+		  	margin: 40px 0;
+		  	display: flex;
+		  	justify-content: center;
+			/* flex: 1; */
+			display: flex;
+			align-items: center;
+		  }
+		  .tijiao_txt1{
+		  	font-size: 30px;
+		  }
+		  .tijiao_txt2 span:nth-of-type(1){
+		  	font-size: 28px;
+		  	font-weight: bold;
+		  }
+		  .tijiao_txt3 span:nth-child(odd){
+		  	font-size: 28px;
+		  }
+		  .answer_list{
+			  flex: 1;
+			/*  height: 0;
+			  display: flex;
+			  flex-direction: column; */
+			  overflow: auto;
+			  height: 0;
+		  }
+		.echarts_box{
+			display: flex;
+			flex-direction: column;
+			  height: 470px !important;
+			border: 1px solid #DADADA;
+			margin-bottom: 40px;
+		  }
+		  .answer_list_header{
+			  height: 52px;
+			  background: #F5F5F5;
+			  display: flex;
+			  box-sizing: border-box;
+			  align-items: center;
+			  padding: 0 10px;
+			  justify-content: space-between;
+			  font-size: 18px;
+			  color: #303753;
+		  }
+	</style>
+	<body>
+		<div id="app" class="wrapper-ab">
+			<div class="container">
+				<div class="header">
+					<img src="./img/icon-left.png">
+					<span>答题结果</span>
+					<i></i>
+				</div>
+				<div class="content">
+					<div class="content_l">
+						<div class="swiper_box">
+							<el-carousel :interval="5000" arrow="always" indicator-position='none' height='540px'>
+								<el-carousel-item v-for="(item,index) in anwserList" :key="index">
+									<img style="width: 100%;height: 540px;" :src="item.img">
+								</el-carousel-item>
+							</el-carousel>
+						</div>
+
+					</div>
+					<div class="content_r">
+						<div class="tijiao_box_container">
+							<div class="tijiaonum_box tijiao_box">
+								<p class="tijiao_txt1">提交进度</p>
+								<p class="tijiao_txt2"><span>20</span><span>/45人</span></p>
+							</div>
+							<div class="tijiaomin_box tijiao_box">
+								<p class="tijiao_txt1">已用时</p>
+								<p class="tijiao_txt3"><span>1</span><span>min</span><span>30</span><span>s</span></p>
+							</div>
+						</div>
+						<div class="answer_list">
+							<div style="height: 100%;">
+
+								<div class="echarts_box" v-for="(item,index) in dataList" :key="index">
+									<div class="answer_list_header">
+										<span><span>第{{index+1}}题</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>正确率{{item.zql}}</span></span><span>答案:
+											{{item.qus}}</span>
+									</div>
+									<div :id="getEchartId(index)" style="flex: 1;">
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="footer">
+					<div class="close_btn footer_btn">
+						<img src="img/icon-close.png"><span>关闭</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<!-- 引入组件库 -->
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+	<script src="plugs/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+	<script src="echarts/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="echarts/echarts-liquidfill.min.js" type="text/javascript" charset="utf-8"></script>
+
+</html>
+<script type="text/javascript">
+	var app = new Vue({
+		el: '#app',
+		data: {
+			anwserList: [{
+					img: 'img/swiper.png',
+					id: 1
+				},
+				{
+					img: 'img/swiper.png',
+					id: 1
+				}
+			],
+			dataList: [{
+					zql: '50%',
+					qus: 'A',
+					name: ['A', 'B', 'C', 'D'],
+					num: [18, 16, 15, 12]
+				},
+				{
+					zql: '50%',
+					qus: 'A C',
+					name: ['全对', 'A', 'B', 'C', 'D'],
+					num: [12, 15, 18, 16, 15]
+				},
+				{
+					zql: '50%',
+					qus: '正确',
+					name: ['正确', '错误'],
+					num: [15, 16]
+				},
+				{
+					zql: '50%',
+					qus: '错误',
+					name: ['正确', '错误'],
+					num: [15, 16]
+				}
+			]
+		},
+		mounted: function() {
+			var that = this
+			this.dataList.filter(function(item, index) {
+				var hadArr = item.qus.split(' ')
+				let index1 = []
+				hadArr.filter(function(v) {
+					index1.push(item.name.indexOf(v))
+				})
+				var colorList = new Array
+				colorList.length = item.name.length
+				item.name.filter(function(v, index) {
+					if (v == '全对') {
+						colorList[index] = '#3699FF'
+					} else {
+						colorList[index] = '#767E91'
+					}
+
+				})
+
+				for (var i = 0; i < index1.length; i++) {
+					colorList[index1[i]] = '#3699FF'
+				}
+				console.log(colorList)
+				var myChart = echarts.init(document.getElementById('echart' + (index + 1)));
+				let option = {
+					xAxis: {
+						type: 'category',
+						data: item.name,
+						axisLine: { //这是x轴文字颜色
+							lineStyle: {
+								color: "#303753",
+							},
+							textStyle: {
+								color: '#fff'
+							}
+						}
+					},
+					grid: {
+						left: '10%',
+						right: '10%',
+						containLabel: true
+					},
+					yAxis: {
+						type: 'value',
+						splitLine: { //网格线
+							lineStyle: {
+								type: 'dotted' //设置网格线类型 dotted：虚线   solid:实线
+							},
+							show: true //隐藏或显示
+						},
+						axisLine: {
+
+							show: false //y轴线消失
+
+						},
+						axisTick: {
+
+							show: false //y轴坐标点消失
+
+						},
+					},
+					series: [{
+
+						data: item.num,
+						type: 'bar',
+						barWidth: 60,
+						itemStyle: {
+							normal: {
+								color: function(params) {
+									return colorList[params.dataIndex]
+								}
+							}
+						},
+						label: {
+
+							normal: {
+
+								show: true,
+
+								position: 'top',
+
+								formatter: '{c}人'
+
+							}
+
+						}
+					}]
+				};
+				myChart.setOption(option);
+			})
+
+
+		},
+		methods: {
+			getEchartId(e) {
+				return 'echart' + (e + 1)
+			}
+		}
+	})
+</script>
