@@ -63,20 +63,23 @@
 			text-align: right;
 			margin: 15px 15px 15px 0;
 		}
-		.p_title{
+
+		.p_title {
 			color: #303753;
 			font-size: 18px;
 			font-weight: bold;
 			text-align: center;
 		}
-		.student_list{
+
+		.student_list {
 			display: flex;
 			flex-wrap: wrap;
-			justify-content: space-between;
+			justify-content: flex-start;
 			box-sizing: border-box;
 			padding: 20px;
 		}
-		.student_box{
+
+		.student_box {
 			width: 128px;
 			height: 48px;
 			line-height: 48px;
@@ -85,13 +88,15 @@
 			border-radius: 4px;
 			border: 1px solid #DADADA;
 			color: #B3B9C7;
-			margin: 5px;
+			margin: 5px 26px;
 		}
-		.student_selected{
-          background: #3699FF;
-		  color: #fff;
+
+		.student_selected {
+			background: #3699FF;
+			color: #fff;
 		}
-		.tijiao_box{
+
+		.tijiao_box {
 			width: 350px;
 			height: 168px;
 			margin: 0 30px;
@@ -102,25 +107,31 @@
 			padding: 40px;
 			color: #fff;
 		}
-		.tijiaonum_box{
+
+		.tijiaonum_box {
 			background: url(img/jindu_bg.png);
 		}
-		.tijiaomin_box{
+
+		.tijiaomin_box {
 			background: url(img/yongshi_bg.png);
 		}
-		.tijiao_box_container{
+
+		.tijiao_box_container {
 			margin-top: 40px;
 			display: flex;
 			justify-content: center;
 		}
-		.tijiao_txt1{
+
+		.tijiao_txt1 {
 			font-size: 30px;
 		}
-		.tijiao_txt2 span:nth-of-type(1){
+
+		.tijiao_txt2 span:nth-of-type(1) {
 			font-size: 28px;
 			font-weight: bold;
 		}
-		.tijiao_txt3 span:nth-child(odd){
+
+		.tijiao_txt3 span:nth-child(odd) {
 			font-size: 28px;
 		}
 	</style>
@@ -137,21 +148,21 @@
 						<p class="p_tips">提示：亮起代表已提交</p>
 						<p class="p_title">提交名单</p>
 						<ul class="student_list">
-							<li class="student_box" :class="item.select?'student_selected':''"  v-for="(item,index) in studentList" :key='index'>{{item.name}}</li>
+							<li class="student_box" :class="item.select?'student_selected':''" v-for="(item,index) in studentList" :key='index'>{{item.name}}</li>
 						</ul>
 					</div>
 					<div class="content_r" style="flex: 1;">
 						<div class="tijiao_box_container">
-							
-						
-						<div class="tijiaonum_box tijiao_box">
-							<p class="tijiao_txt1">提交进度</p>
-							<p class="tijiao_txt2"><span>20</span><span>/45人</span></p>
-						</div>
-						<div class="tijiaomin_box tijiao_box">
-							<p class="tijiao_txt1">已用时</p>
-							<p class="tijiao_txt3"><span>1</span><span>min</span><span>30</span><span>s</span></p>
-						</div>
+
+
+							<div class="tijiaonum_box tijiao_box">
+								<p class="tijiao_txt1">提交进度</p>
+								<p class="tijiao_txt2"><span>20</span><span>/45人</span></p>
+							</div>
+							<div class="tijiaomin_box tijiao_box">
+								<p class="tijiao_txt1">已用时</p>
+								<p class="tijiao_txt3"><span>{{fen}}</span><span>min</span><span>{{miao}}</span><span>s</span></p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -174,33 +185,76 @@
 		var app = new Vue({
 			el: "#app",
 			data: {
-				studentList:[
-					{name:"小明",select:true,id:1},
-					{name:"小明",select:true,id:1},
-					{name:"小明",select:true,id:1},
-					{name:"小明",select:false,id:1},
-					{name:"小明",select:true,id:1},
-					{name:"小明",select:true,id:1},
-					{name:"小明",select:false,id:1},
-					{name:"小明",select:true,id:1},
-					{name:"小明",select:false,id:1},
-					{name:"小明",select:true,id:1},
-					{name:"小明",select:false,id:1},
-					{name:"小明",select:true,id:1},
-					{name:"小明",select:true,id:1},
-					{name:"小明",select:true,id:1},
-					{name:"小明",select:true,id:1},
-					{name:"小明",select:true,id:1},
-					{name:"小明",select:false,id:1},
-					{name:"小明",select:true,id:1},
-					{name:"小明",select:true,id:1},
-					{name:"小明",select:false,id:1},
-					{name:"小明",select:true,id:1},
-					{name:"小明",select:false,id:1},
-					{name:"小明",select:true,id:1},
-					{name:"小明",select:false,id:1},
-					{name:"小明",select:true,id:1},
-					]
+				minute:0,
+				seconds:0,
+				day:0,
+				hour:0,
+				timer:null,
+				studentList: [{
+						name: "小明",
+						select: false,
+						id: 1
+					},
+					{
+						name: "小明",
+						select: false,
+						id: 2
+					},
+					{
+						name: "小明",
+						select: false,
+						id: 1
+					},
+					{
+						name: "小明",
+						select: false,
+						id: 2
+					},
+
+				]
+			},
+			computed:{
+				fen(){
+					return this.minute<10?'0'+this.minute:this.minute
+				},
+				miao(){
+					return this.seconds<10?'0'+this.seconds:this.seconds
+				}
+			},
+			mounted() {
+				setTimeout(() => {
+					this.get()
+				}, 2000)
+				this.timer = setInterval(this.startTimer, 1000);
+			},
+			methods: {
+				 startTimer () {
+				    this.seconds += 1;
+				    if (this.seconds >= 60) {
+				    this.seconds = 0;
+				    this.minute = this.minute + 1;
+				    }
+				    
+				    if (this.minute >= 60) {
+				    this.minute = 0;
+				    this.hour = this.hour + 1;
+				    }
+				},
+				checkedZero(number) {
+                if (number < 9) {
+                    // eslint-disable-next-line no-param-reassign
+                    number = `0${number}`;
+                }
+                return number;
+            },
+				get() {
+					var id = 1
+					this.studentList.filter(v => {
+						if (v.id == id) {
+							v.select = true
+						}
+					})
+				}
 			}
 		})
 	</script>

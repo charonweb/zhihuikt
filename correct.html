@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="fonts/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<style>
+			.el-input__inner{
+				background-color: #F1F5F8;
+			}
+			.box_size {
+				box-sizing: border-box;
+			}
+			.cursor_type_p{
+				cursor: pointer;
+			}
+			.flex_box{
+				display: flex;
+				align-items: center;
+			}
+			.container {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				background: #F1F5F8;
+				box-sizing: border-box;
+				justify-content: space-between;
+				font-family: '.PingFang SC';
+			}
+			.container_top{
+				height: 66px;
+				background: #fff;
+				align-items: center;
+				justify-content: space-between;
+				box-sizing: border-box;
+				padding: 15px;
+			}
+			.container_bottom{
+				flex: 1;
+				padding: 15px;
+			}
+			.container_bottom_box{
+				width: 100%;
+				height: 100%;
+				background: #fff;
+			}
+			.swiper_contain{
+				width: 80%;
+				height: 100%;
+				border-right: 15px solid #F1F5F8;
+				box-sizing: border-box;
+				position: relative;
+				/* padding: 50px 120px; */
+			}
+			.img_edit_box{
+				width: 387px;
+				height: 60px;
+				background: rgba(0, 0, 0, 0.7);
+				border-radius: 12px;
+				position: absolute; left: 50%; bottom: -15px; 
+				  z-index: 888;
+				    transform: translate(-50%, -50%); 
+					align-items: center;
+			}
+			.num_contain{
+				width: 20%;
+				height: 100%;
+				padding: 15px;
+				flex-direction: column;
+			}
+			.student_msg{
+				align-items: center;
+			}
+			.go_back{
+				color: #2B8CFF;
+				font-size: 20px;
+			}
+			.img_tool{
+				display: flex;
+				height: 100%;
+			}
+			.img_tool_cont{
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+				margin: 0 30px;
+				color: #fff;
+				justify-content: space-around;
+				cursor: pointer;
+			}
+			
+			.img_tool_cont i{
+				font-size: 24px;
+			}
+			.img_tool_cont span{
+				font-size: 14px;
+			}
+			.result_type{
+				width: 100%;
+				font-size: 16px;
+				justify-content: space-around;
+				padding: 10px 0 30px 0;
+				border-bottom: 1px solid #ECEEF0;
+			}
+			.result_type li{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.result_type li img{
+				margin-bottom: 10px;
+			}
+			.select_true_box{
+				width: 100%;
+				justify-content: space-between;
+				padding: 15px;
+				margin-top: 40px;
+				position: relative;
+			}
+			.fen_box{
+				position: absolute;
+				width: 120px;
+				height: 24px;
+				border: 1px solid #2D8DFF;
+				top: -30px;
+				font-size: 16px;
+				left: 0px;
+				text-align: center;
+				line-height: 24px;
+			}
+			.fen_box_l{
+				width: 60%;
+				height: 100%;
+				color: #2B8CFF;
+				background: rgba(45, 141, 255, 0.1);
+			}
+			.fen_box_r{
+				width: 40%;
+				background: #2B8CFF;
+				height: 100%;
+				color: #fff;
+			}
+			.calcuator_box{
+				height: 405px;
+				width: 100%;
+				background: #EEF2F8;
+				border-radius: 8px;
+				box-sizing: border-box;
+				flex-direction: column;
+			}
+			.final_grade{
+				line-height: 100px;
+				text-align: end;
+				width: 100%;
+				padding:0 15px;
+			}
+			.calcuator_table{
+				flex: 1;
+				width: 100%;
+			}
+			table td button{
+			width: 100%;
+			height: 100%;
+			background: #D9E1EC;
+			border: 0;
+			border-radius: 4px
+			cursor:pointer
+			}
+			
+			table  td{
+				width: 89px;
+				height: 61px;
+				background: #D9E1EC;
+				border-radius: 4px;
+				text-align: center;
+				font-size: 36px;
+				cursor: pointer;
+			}
+			.textarea_box{
+				width: 100%;
+				margin-top: 10px;
+			}
+			.submit_box{
+				background: #EEF2F8;
+				border-radius: 4px;
+				height: 70px;
+				width: 100%;
+				line-height: 60px;
+				text-align: center;
+				margin-top: 10px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app" v-cloak class="wrapper-ab">
+			<div class="container">
+				<div class="container_top flex_box cursor_type_p">
+					<div class="go_back">
+						<span class="el-icon-arrow-left"></span><span>返回</span>
+					</div>
+					<div class="student_msg flex_box">
+						<span><span style="font-size: 16px;">当前学生:</span><span style="font-size: 20px;margin:0 30px 0 15px;">张三</span></span>
+						<el-select v-model="value" placeholder="请选择" size='mini'>
+							<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" style='width: 160px;'>
+							</el-option>
+						</el-select>
+						<el-select v-model="value" placeholder="请选择" size='mini' style='margin: 0 15px;'>
+							<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" style='width: 160px;'>
+							</el-option>
+						</el-select>
+						<el-select v-model="value" placeholder="请选择" size='mini'>
+							<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" style='width: 160px;'>
+							</el-option>
+						</el-select>
+						<div><span style="margin: 0 10px 0 30px;">已阅:</span><span style="font-size: 20px;color: #2D8DFF;">3</span><span>/24</span></div>
+					</div>
+					<div class="next_box">
+						<el-button size='mini' type="primary" plain>下一人</el-button>
+					</div>
+				</div>
+				<div class="container_bottom box_size">
+					<div class="container_bottom_box flex_box">
+						<div class="swiper_contain">
+							<el-carousel :interval="5000" arrow="always" indicator-position='none' style='height: 100%;' height='100%'>
+								<el-carousel-item v-for="(item,index) in anwserList" :key="index">
+									<div style="width: 100%;height: 100%;box-sizing: border-box;padding: 50px 120px;">
+										<img style="width: 100%;height:100%;" :src="item.img">
+									</div>
+								</el-carousel-item>
+							</el-carousel>
+							<div class="img_edit_box flex_box">
+								<ul class="img_tool">
+									<li class="img_tool_cont">
+										<i class="el-icon-edit"></i>
+										<span>画笔</span>
+									</li>
+									<li class="img_tool_cont">
+										<i class="el-icon-zoom-in"></i>
+										<span>放大</span>
+									</li>
+									<li class="img_tool_cont">
+										<i class="el-icon-zoom-out"></i>
+										<span>缩小</span>
+									</li>
+								</ul>
+								<span style="color: #fff;margin-right: 30px;">|</span>
+								<el-button type="primary" size='mini'>1/2</el-button>
+							</div>
+						</div>
+						<div class="num_contain box_size flex_box">
+							<ul class="result_type flex_box box_size">
+								<li><img src="img/youxiu_act.png"><span>优秀作答</span></li>
+								<li><img src="./img/miss.png"><span>典型错误</span></li>
+								<li><img src="img/chongzuo.png"><span>打回重做</span></li>
+							</ul>
+							<ul class="select_true_box flex_box box_size">
+								<li>
+									<img src="img/icon_dui.png">
+								</li>
+								<li>
+									<img src="img/icon_bandui.png">
+								</li>
+								<li>
+									<img src="img/icon_cuo.png">
+								</li>
+								<div class="fen_box flex_box">
+									<div class="fen_box_l">
+										本题满分
+									</div>
+									<div class="fen_box_r">
+										12分
+									</div>
+								</div>
+							</ul>
+							<div class="calcuator_box flex_box">
+								<div class="final_grade">
+									<span>得分</span><span style="font-size: 48px;">0</span><span>分</span>
+								</div>
+								<div class="calcuator_table">
+									<table cellspacing=10>
+										<tr>
+											<td>
+												<button>1</button>
+											</td>
+											<td><button>2</button></td>
+											<td><button>3</button></td>
+											<td rowspan="2"><button><img src="img/Vector.png" ></button></td>
+										</tr>
+										<tr>
+											<td><button>4</button></td>
+											<td><button>5</button></td>
+											<td><button>6</button></td>
+										</tr>
+										<tr>
+											<td><button>7</button></td>
+											<td><button>8</button></td>
+											<td><button>9</button></td>
+											<td rowspan="2" style="font-size: 24px;"><el-button type="primary" style='width: 100%;height:100%;font-size: 24px;'>确定</el-button></td>
+										</tr>
+										<tr>
+											<td>.</td>
+											<td colspan="2"><button>0</button></td>
+										</tr>
+									</table>
+								</div>
+								<div class="textarea_box">
+									<textarea
+									  style='width: 100%;height: 132px; background: #EEF2F8;border-radius: 4px;border: 0;'
+									  placeholder="请输入内容"
+									  v-model="textarea">
+									</textarea>
+								</div>
+								<div class="submit_box">
+									提交
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</body>
+</html>
+<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="plugs/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script type="text/javascript">
+	var app = new Vue({
+		el: '#app',
+		data: {
+			options: [{
+				value: '选项1',
+				label: '全部班级'
+			}],
+			anwserList: [{
+					img: 'img/swiper.png',
+					id: 1
+				},
+				{
+					img: 'img/swiper.png',
+					id: 1
+				}
+			],
+			value: '',
+			textarea:''
+		}
+	})
+</script>

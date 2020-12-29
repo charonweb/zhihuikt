@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="fonts/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<style type="text/css">
+			.el-input__inner{
+				background-color: #F1F5F8;
+			}
+			.box_size {
+				box-sizing: border-box;
+			}
+			.cursor_type_p{
+				cursor: pointer;
+			}
+			.flex_box{
+				display: flex;
+				align-items: center;
+			}
+			.container {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				background: #F1F5F8;
+				box-sizing: border-box;
+				justify-content: space-between;
+				font-family: '.PingFang SC';
+			}
+
+			.container_top {
+				height: 66px;
+				background: #fff;
+				align-items: center;
+				justify-content: space-between;
+				box-sizing: border-box;
+				padding: 15px;
+			}
+
+			.container_bottom {
+				flex: 1;
+				padding: 15px;
+				padding-left: 0;
+				justify-content: space-between;
+			}
+			.go_back{
+				color: #2B8CFF;
+				font-size: 20px;
+			}
+			.container_bottom_left{
+				width: 14%;
+				height: 100%;
+				background: #fff;
+				box-sizing: border-box;
+				padding: 15px;
+			}
+			.container_bottom_right{
+				width: 85%;
+				height: 100%;
+			}
+			.select_ul{
+				
+			}
+			.select_ul li{
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				height: 136px;
+				cursor: pointer;
+			}
+			.select_ul li.active{
+				background: #F1F5F8;
+				color: #2B8CFF;
+				border-radius: 8px;
+			}
+			.select_ul li i{
+				margin-bottom: 10px;
+				font-size: 26px;
+			}
+			.top_title{
+				display: flex;
+				align-items: center;
+			}
+			.top_title .span_type{
+				box-sizing: border-box;
+				padding: 3px 6px;
+				border-radius: 2px;
+				color: #fff;
+				font-size: 14px;
+				background: #5887FF;
+				margin-right: 10px;
+			}
+			.zuoye_zl{
+				height: 23%;background: #fff;
+				display: flex;
+				align-items: center;
+				box-sizing: border-box;
+				padding: 0 0 0 120px;
+			}
+			.zuoye_zl ul{
+				display: flex;
+				width: 70%;
+				justify-content: space-around;
+				margin-right: 40px;
+			}
+			.zuoye_zl ul li{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.zuoye_zl ul li p:nth-child(1){
+				font-size: 48px;
+			}
+			.zuoye_zl ul li p:nth-child(2){
+				background: #F1F5F8;
+				padding: 4px 8px;
+				border-radius: 2px;
+				margin-top: 15px;
+			}
+			.zuoye_cjfb{
+				height: 75%;background: #fff;
+				padding: 15px;
+				display: flex;
+				flex-direction: column;
+			}
+			.zyxq_title{
+				display: flex;
+				align-items: center;
+			}
+			.zyxq_title span:nth-child(1){
+				width: 5px;
+				height: 23px;
+				background: #2D8DFF;
+				margin-right: 5px;
+			}
+			.zyxq_content{
+				flex: 1;
+				box-sizing: border-box;
+				padding: 100px 150px 100px 0;
+				display: flex;
+				justify-content: space-between;
+			}
+			.zyxq_content_l{
+				width: 40%;
+				height: 100%;
+			}
+			.zyxq_content_r{
+				width: 40%;
+				height: 100%;
+				box-shadow: 0px 4px 12px rgba(110, 125, 148, 0.15);
+				border-radius: 8px;
+				border: 1px solid #ECEEF0;
+				display: flex;
+				flex-direction: column;
+			}
+			.zyxq_content_r ul{
+				display: flex;
+				height: 50px;
+			}
+			.zyxq_content_r ul li{
+				flex: 1;
+				background: #F1F5F8;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				cursor: pointer;
+			}
+			.zyxq_content_r ul li.active{
+				background: #fff;
+				color:#2D8DFF ;
+			}
+			.stundet_list{
+				flex: 1;
+			}
+			.rank_box{
+				display: flex;
+				justify-content: space-between;
+			}
+			.rank_box p{
+				display: flex;
+				width: 40%;
+				justify-content: space-around;
+				margin: 15px 0;
+			}
+			.rank_box p span:nth-child(1){
+				color: #A6AAB8;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app" v-cloak class="wrapper-ab">
+			<div class="container">
+				<div class="container_top flex_box cursor_type_p">
+					<div class="go_back">
+						<span class="el-icon-arrow-left"></span><span>返回</span>
+					</div>
+					<div class="top_title">
+						<span class="span_type">题库</span><span>12月11日语文作业</span>
+					</div>
+					<el-select v-model="value" placeholder="请选择" size='mini'>
+						<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" style='width: 160px;'>
+						</el-option>
+					</el-select>
+				</div>
+				<div class="container_bottom box_size flex_box">
+					<div class="container_bottom_left">
+						<ul class="select_ul">
+							<li class="active">
+								<i class="el-icon-document"></i>
+								<span>作业总览</span>
+							</li>
+							<li>
+								<i class="el-icon-document-checked"></i>
+								<span>题目讲评</span>
+							</li>
+							<li>
+								<i class="el-icon-user"></i>
+								<span>学生详情</span>
+							</li>
+						</ul>
+					</div>
+					<div class="container_bottom_right" style="display: flex;flex-direction: column;justify-content: space-between;">
+						<div class="zuoye_zl">
+							<ul>
+								<li>
+									<p><span style="color: #2D8DFF;">82.6</span><span style="color: #A6AAB8;">/</span><span style="font-size: 36px;color:#A6AAB8;">100</span></p>
+									<p>平均分/满分</p>
+								</li>
+								<li>
+									<p>90</p>
+									<p>最高分</p>
+								</li>
+								<li>
+									<p>61</p>
+									<p>最低分</p>
+								</li>
+								<li>
+									<p>18'11''</p>
+									<p>最低分</p>
+								</li>
+							</ul>
+							<div id="echarts1" style="width: 120px;height: 100%;display: flex;align-items: center;flex-direction: column;justify-content: center;">
+								<el-progress type="dashboard" :percentage="25" :stroke-width='12'></el-progress>
+								<span>已提交/总人数<i class="el-icon-arrow-down cursor_type_p"></i></span>
+							</div>
+						</div>
+						<div class="zuoye_cjfb box_size">
+							<div class="zyxq_title">
+								<span></span><span>班级成绩分布</span>
+							</div>
+							<div class="zyxq_content">
+								<div class="zyxq_content_l" id="echarts2">
+									
+								</div>
+								<div class="zyxq_content_r">
+									<ul>
+										<li class="active">
+											<span>优秀</span>
+											<span>90%-100%</span>
+										</li>
+										<li>
+											<span>良好</span>
+											<span>90%-100%</span>
+										</li>
+										<li>
+											<span>合格</span>
+											<span>90%-100%</span>
+										</li>
+										<li>
+											<span>待合格</span>
+											<span>90%-100%</span>
+										</li>
+									</ul>
+									<div class="stundet_list">
+										<div class="rank_box" v-for="(item,index) in studentList" :key='index'>
+											<p><span>{{index+1}}</span><span>{{item.name}}</span><span>{{item.num}}分</span></p>
+											<p><span>{{index+1}}</span><span>{{item.name}}</span><span>{{item.num}}分</span></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="plugs/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="echarts/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="echarts/echarts-liquidfill.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var app = new Vue({
+		el: '#app',
+		data:{
+			options: [{
+				value: '选项1',
+				label: '全部班级'
+			}],
+			studentList:[
+				{
+					name:'张三1',
+					num:88
+				},
+				{
+					name:'张三2',
+					num:88
+				},
+				{
+					name:'张三3',
+					num:88
+				},
+				{
+					name:'张三4',
+					num:88
+				},
+				{
+					name:'张三5',
+					num:88
+				},
+				{
+					name:'张三6',
+					num:88
+				},
+				{
+					name:'张三7',
+					num:88
+				},
+				{
+					name:'张三8',
+					num:88
+				},
+				{
+					name:'张三9',
+					num:88
+				}
+			],
+			value:''
+		},
+		mounted(){
+			var myChart = echarts.init(document.getElementById('echarts2'));
+			var colorList =['#2D8DFF','#48D0C8', '#FFAB2D', '#B8C6DC']
+			let option = {
+				xAxis: {
+					type: 'category',
+					data: ['优秀', '良好', '合格', '待合格'],
+					axisLine: { //这是x轴文字颜色
+						lineStyle: {
+							color: "#303753",
+						},
+						textStyle: {
+							color: '#fff'
+						}
+					}
+				},
+				grid: {
+					left: '1%',
+					right: '1%',
+					bottom:'5%',
+					containLabel: true
+				},
+				yAxis: {
+					type: 'value',
+					splitLine: { //网格线
+						lineStyle: {
+							type: 'dotted' //设置网格线类型 dotted：虚线   solid:实线
+						},
+						show: true //隐藏或显示
+					},
+					axisLine: {
+			
+						show: false //y轴线消失
+			
+					},
+					axisTick: {
+			
+						show: false //y轴坐标点消失
+			
+					},
+				},
+				series: [{
+			
+					data: [120, 200, 150, 80],
+					type: 'bar',
+					barWidth: 40,
+					itemStyle: {
+						normal: {
+							color: function(params) {
+								return colorList[params.dataIndex]
+							}
+						}
+					},
+					label: {
+			
+						normal: {
+			
+							show: true,
+			
+							position: 'top',
+			
+							formatter: '{c}人'
+			
+						}
+			
+					}
+				}]
+			};
+			myChart.setOption(option);
+			// myChart.setOption(option);
+		}
+	})
+</script>

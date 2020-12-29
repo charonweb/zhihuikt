@@ -12,7 +12,13 @@
 			.box_size {
 				box-sizing: border-box;
 			}
-
+			.cursor_type_p{
+				cursor: pointer;
+			}
+			.flex_box{
+				display: flex;
+				align-items: center;
+			}
 			.container {
 				width: 100%;
 				height: 100%;
@@ -47,6 +53,9 @@
 
 			.container_r_bottom {
 				flex: 1;
+				padding: 15px;
+				display: flex;
+				flex-direction: column;
 			}
 
 			.select_list {
@@ -81,10 +90,73 @@
 			.el-input__inner{
 				background-color: #F1F5F8;
 			}
+			.job_list_title{
+				justify-content: space-between;
+			}
+			.job_type_1{
+				width: 58px;
+				height: 24px;
+				background: #5887FF;
+				color: #fff;
+				text-align: center;
+				line-height: 24px;
+				border-radius: 3px;
+				font-size: 14px;
+			}
+			.class_type{
+				width: 40px;
+				height: 24px;
+				background: rgba(184, 198, 220, 0.33);
+				border-radius: 2px;
+				color: #777E97;
+				font-size: 14px;
+				text-align: center;
+				line-height: 24px;
+				margin: 0 10px;
+			}
+			.job_list{
+				box-sizing: border-box;
+				padding: 22px 0;
+				border-bottom: 1px solid #ECEEF0;
+			}
+			.job_list:nth-child(1){
+				padding-top: 0;
+			}
+			.job_title{
+				font-size: 20px;
+				
+			}
+			.job_status{
+				margin-right: 30px;
+			}
+			.job_status_btn{
+				display: flex;
+				justify-content: space-between;
+			}
+			.job_status span:nth-child(1){
+				color: #A6AAB8;
+				margin-right: 15px;
+			}
+			.job_status_box{
+				font-size: 16px;
+				margin-top: 10px;
+			}
+			.job_status_box .job_status1:nth-child(2) span:nth-child(2){
+				color: #2B8CFF;
+			}
+			.job_status_box .job_status1:nth-child(3) span:nth-child(2){
+				color: #FF9B25;
+			}
+			.pagination_box{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 5%;
+			}
 		</style>
 	</head>
 	<body>
-		<div id="app" class="wrapper-ab">
+		<div id="app" v-cloak class="wrapper-ab">
 			<div class="container">
 				<div class="container_l box_size">
 					<el-button type="primary" icon='el-icon-circle-plus' style='width: 100%;font-size: 20px;'>布置作业</el-button>
@@ -112,8 +184,64 @@
 						</div>
 
 					</div>
-					<div class="container_r_bottom">
-
+					<div class="container_r_bottom box_size">
+						<div style="height: 95%;">
+							
+						
+						<div class="job_list" v-for="(item,index) in jobList" :key='index'>
+							<div class="job_list_title flex_box">
+								<div class="job_msg_type flex_box">
+									<span class="job_type_1">{{item.type}}</span>
+									<span class="class_type">{{item.subject}}</span>
+									<span class="job_title">{{item.title}}</span>
+								</div>
+								<el-dropdown trigger="click">
+								<i class="el-icon-more cursor_type_p"></i>
+								<el-dropdown-menu slot="dropdown">
+								        <el-dropdown-item icon="el-icon-video-play">预览</el-dropdown-item>
+								        <el-dropdown-item icon="el-icon-share">转发</el-dropdown-item>
+								        <el-dropdown-item icon="el-icon-delete">删除</el-dropdown-item>
+								      </el-dropdown-menu>
+								 </el-dropdown>
+							</div>
+							<div class="job_status_box flex_box">
+								<div class="job_status job_status1">
+									<span>班级</span><span>{{item.classic}}</span>
+								</div>
+								<div class="job_status job_status1">
+									<span>已提交</span><span>{{item.yitijiao}}</span>
+								</div>
+								<div class="job_status job_status1">
+									<span>待批改</span><span>{{item.daipigai}}</span>
+								</div>
+							</div>
+							<div class="job_status_box flex_box job_status_btn">
+								<div class="flex_box">
+								<div class="job_status">
+										<span>截止时间</span><span>{{item.endTime}}</span>
+								</div>
+								<div class="job_status">
+									<span>发送时间</span><span>{{item.sendTime}}</span>
+								</div>	
+								</div>
+								<div>
+									 <el-button size='mini' type="primary" plain>批改</el-button> <el-button size='mini' type="primary">查看报告</el-button>
+								</div>
+							</div>
+							<div class="job_status_box flex_box">
+								<div class="job_status">
+									<span>答案公布</span><span>{{item.answerShow}}</span>
+								</div>
+							</div>
+						</div>
+						</div>
+						<div class="pagination_box">
+							<el-pagination
+							  background
+							  layout="prev, pager, next"
+							  :total="1000">
+							</el-pagination>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -148,6 +276,64 @@
 					icon: 'el-icon-data-analysis',
 					name: "阶段分析"
 				}
+			],
+			jobList:[
+				{
+					type:'自定义',
+					subject:'语文',
+					title:'12月11日语文作业',
+					classic:'一年级1班',
+					yitijiao:'2/20',
+					daipigai:'16',
+					endTime:'2020/07/05 05:13',
+					sendTime:'2020/06/25 03:09',
+					answerShow:'学生提交后'
+				},
+				{
+					type:'自定义',
+					subject:'语文',
+					title:'12月11日语文作业',
+					classic:'一年级1班',
+					yitijiao:'2/20',
+					daipigai:'16',
+					endTime:'2020/07/05 05:13',
+					sendTime:'2020/06/25 03:09',
+					answerShow:'学生提交后'
+				},
+				{
+					type:'自定义',
+					subject:'语文',
+					title:'12月11日语文作业',
+					classic:'一年级1班',
+					yitijiao:'2/20',
+					daipigai:'16',
+					endTime:'2020/07/05 05:13',
+					sendTime:'2020/06/25 03:09',
+					answerShow:'学生提交后'
+				},
+				{
+					type:'自定义',
+					subject:'语文',
+					title:'12月11日语文作业',
+					classic:'一年级1班',
+					yitijiao:'2/20',
+					daipigai:'16',
+					endTime:'2020/07/05 05:13',
+					sendTime:'2020/06/25 03:09',
+					answerShow:'学生提交后'
+				},
+				{
+					type:'自定义',
+					subject:'语文',
+					title:'12月11日语文作业',
+					classic:'一年级1班',
+					yitijiao:'2/20',
+					daipigai:'16',
+					endTime:'2020/07/05 05:13',
+					sendTime:'2020/06/25 03:09',
+					answerShow:'学生提交后'
+				}
+				
 			]
 		},
 		methods: {
