@@ -9,19 +9,23 @@
 		<!-- 引入样式 -->
 		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 		<style type="text/css">
-			.el-input__inner{
+			.el-input__inner {
 				background-color: #F1F5F8;
 			}
+
 			.box_size {
 				box-sizing: border-box;
 			}
-			.cursor_type_p{
+
+			.cursor_type_p {
 				cursor: pointer;
 			}
-			.flex_box{
+
+			.flex_box {
 				display: flex;
 				align-items: center;
 			}
+
 			.container {
 				width: 100%;
 				height: 100%;
@@ -48,25 +52,28 @@
 				padding-left: 0;
 				justify-content: space-between;
 			}
-			.go_back{
+
+			.go_back {
 				color: #2B8CFF;
 				font-size: 20px;
 			}
-			.container_bottom_left{
+
+			.container_bottom_left {
 				width: 14%;
 				height: 100%;
 				background: #fff;
 				box-sizing: border-box;
 				padding: 15px;
 			}
-			.container_bottom_right{
+
+			.container_bottom_right {
 				width: 85%;
 				height: 100%;
 			}
-			.select_ul{
-				
-			}
-			.select_ul li{
+
+			.select_ul {}
+
+			.select_ul li {
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
@@ -74,20 +81,24 @@
 				height: 136px;
 				cursor: pointer;
 			}
-			.select_ul li.active{
+
+			.select_ul li.active {
 				background: #F1F5F8;
 				color: #2B8CFF;
 				border-radius: 8px;
 			}
-			.select_ul li i{
+
+			.select_ul li i {
 				margin-bottom: 10px;
 				font-size: 26px;
 			}
-			.top_title{
+
+			.top_title {
 				display: flex;
 				align-items: center;
 			}
-			.top_title .span_type{
+
+			.top_title .span_type {
 				box-sizing: border-box;
 				padding: 3px 6px;
 				border-radius: 2px;
@@ -96,61 +107,74 @@
 				background: #5887FF;
 				margin-right: 10px;
 			}
-			.zuoye_zl{
-				height: 23%;background: #fff;
+
+			.zuoye_zl {
+				height: 23%;
+				background: #fff;
 				display: flex;
 				align-items: center;
 				box-sizing: border-box;
 				padding: 0 0 0 120px;
 			}
-			.zuoye_zl ul{
+
+			.zuoye_zl ul {
 				display: flex;
 				width: 70%;
 				justify-content: space-around;
 				margin-right: 40px;
 			}
-			.zuoye_zl ul li{
+
+			.zuoye_zl ul li {
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 			}
-			.zuoye_zl ul li p:nth-child(1){
+
+			.zuoye_zl ul li p:nth-child(1) {
 				font-size: 48px;
 			}
-			.zuoye_zl ul li p:nth-child(2){
+
+			.zuoye_zl ul li p:nth-child(2) {
 				background: #F1F5F8;
 				padding: 4px 8px;
 				border-radius: 2px;
 				margin-top: 15px;
 			}
-			.zuoye_cjfb{
-				height: 75%;background: #fff;
+
+			.zuoye_cjfb {
+				height: 75%;
+				background: #fff;
 				padding: 15px;
 				display: flex;
 				flex-direction: column;
 			}
-			.zyxq_title{
+
+			.zyxq_title {
 				display: flex;
 				align-items: center;
 			}
-			.zyxq_title span:nth-child(1){
+
+			.zyxq_title span:nth-child(1) {
 				width: 5px;
 				height: 23px;
 				background: #2D8DFF;
 				margin-right: 5px;
 			}
-			.zyxq_content{
+
+			.zyxq_content {
 				flex: 1;
 				box-sizing: border-box;
 				padding: 100px 150px 100px 0;
 				display: flex;
 				justify-content: space-between;
 			}
-			.zyxq_content_l{
+
+			.zyxq_content_l {
 				width: 40%;
 				height: 100%;
 			}
-			.zyxq_content_r{
+
+			.zyxq_content_r {
 				width: 40%;
 				height: 100%;
 				box-shadow: 0px 4px 12px rgba(110, 125, 148, 0.15);
@@ -159,11 +183,13 @@
 				display: flex;
 				flex-direction: column;
 			}
-			.zyxq_content_r ul{
+
+			.zyxq_content_r ul {
 				display: flex;
 				height: 50px;
 			}
-			.zyxq_content_r ul li{
+
+			.zyxq_content_r ul li {
 				flex: 1;
 				background: #F1F5F8;
 				display: flex;
@@ -172,25 +198,266 @@
 				justify-content: center;
 				cursor: pointer;
 			}
-			.zyxq_content_r ul li.active{
+
+			.zyxq_content_r ul li.active {
 				background: #fff;
-				color:#2D8DFF ;
+				color: #2D8DFF;
 			}
-			.stundet_list{
+
+			.stundet_list {
 				flex: 1;
-			}
-			.rank_box{
 				display: flex;
+				flex-wrap: wrap;
 				justify-content: space-between;
 			}
-			.rank_box p{
+
+			.rank_box {
 				display: flex;
 				width: 40%;
+				flex-direction: column;
+			}
+
+			.rank_box p {
+				display: flex;
+				width: 100%;
+				align-items: center;
 				justify-content: space-around;
 				margin: 15px 0;
 			}
-			.rank_box p span:nth-child(1){
+
+			.rank_box p span:nth-child(1) {
 				color: #A6AAB8;
+				width: 30px;
+				text-align: center;
+			}
+
+			.active2_box_left {
+				width: 74%;
+				background: #fff;
+				box-sizing: border-box;
+				padding: 15px;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.active2_box_right {
+				width: 25%;
+				background: #fff;
+				box-sizing: border-box;
+				padding: 15px;
+			}
+
+			.problem_list {
+				padding: 10px;
+				background: #FBFBFB;
+				/* 分割线 */
+
+				border: 1px solid #ECEEF0;
+				box-sizing: border-box;
+				border-radius: 8px;
+				margin: 30px 0;
+			}
+
+			.progress_box {
+				display: flex;
+				align-items: center;
+				margin-top: 15px;
+				justify-content: space-between;
+			}
+
+			.progress_box1 {
+				display: flex;
+				align-items: center;
+				width: 80%;
+			}
+
+			.progress_box1 span:nth-child(1) {
+				width: 24px;
+				line-height: 24px;
+				text-align: center;
+				background: #ECEEF0;
+				border-radius: 4px;
+				margin-right: 10px;
+			}
+
+			.options_box {
+				box-sizing: border-box;
+				padding: 0 0 0 30px;
+			}
+
+			.options_box_list {
+				display: flex;
+				/* align-items: center; */
+				margin: 15px 0;
+				min-height: 30px;
+			}
+
+			.options_box_list span {
+				text-align: center;
+			}
+
+			.options_box_list span:nth-child(1) {
+				width: 56px;
+				line-height: 32px;
+				height: 32px;
+				text-align: center;
+				background: #F1F5F8;
+				border: 1px solid #ECEEF0;
+				border-radius: 8px;
+			}
+
+			.options_box_list span:nth-child(1).active {
+				background: rgba(45, 141, 255, 0.1);
+				/* #2B8CFF */
+				color: #2D8DFF;
+				border: 1px solid #2D8DFF;
+			}
+
+			.options_box_list span:nth-child(2) {
+				color: #A6AAB8;
+				margin: 0 15px;
+				line-height: 30px;
+			}
+
+			.options_box_list p {
+				width: 65%;
+				line-height: 40px;
+				margin-top: -5px;
+				word-spacing: 15px;
+			}
+
+			.problem_list .options_list {
+				box-sizing: border-box;
+				padding-bottom: 30px;
+				border-bottom: 1px solid #E6EBF1;
+			}
+
+			.problem_list .options_list:nth-last-child(-n+1) {
+				border: none;
+				padding: 0;
+			}
+
+			.problem_box {
+				flex: 1;
+				height: 0;
+				overflow: auto;
+			}
+
+			.result_show {
+				display: flex;
+				width: 30%;
+				box-sizing: border-box;
+				padding-left: 30px;
+				margin-top: 30px;
+				justify-content: space-between;
+			}
+
+			.result_show_box {
+				display: flex;
+				align-items: center;
+				cursor: pointer;
+			}
+
+			.result_show_box img {
+				vertical-align: middle;
+				width: 20px;
+				margin-right: 5px;
+			}
+			.result_show_box{
+				
+			}
+			.result_show_box span:nth-child(2).active{
+				color: #2D8DFF;
+			}
+			.result_img{
+				margin-top: 20px;
+				box-sizing: border-box;
+				padding-left: 30px;
+				display: flex;
+			}
+			.result_img_box{
+				position: relative;
+				margin-right: 20px;
+			}
+			.result_img_box img{
+				width: 268px;
+				height: 201px;
+				
+			}
+			.result_studnet{
+				width: 114px;
+				height: 32px;
+				text-align: center;
+				line-height: 32px;
+				color: #fff;
+				position: absolute;
+				background: rgba(0, 0, 0, 0.5);
+				border-radius: 4px 0px 16px;
+			}
+			.active2_box_right ul li p{
+				font-size: 20px;
+			}
+			.right_select_content{
+				box-sizing: border-box;
+				padding: 15px 0 30px 0;
+			}
+			.right_1{
+				display: flex;
+				
+			}
+			.right_1_img{
+				border: 1px solid #ECEEF0;
+				margin-right: 15px;
+			}
+			.right_1 img{
+				width: 200px;
+				height: 150px;
+				display: block;
+			}
+			.right_1_img:nth-last-child(-n+1){
+				margin: 0;
+			}
+			.score_box{
+				display: flex;
+				justify-content: space-between;
+			}
+			.score_box li{
+				display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			
+			}
+			.yanse_box{
+				display: flex;
+				align-items: center;
+				margin-bottom: 5px;
+			}
+			.yanse_box span:nth-child(1){
+				width: 12px;
+				height: 12px;
+				background: #2D8DFF;
+				margin-right: 5px;
+			}
+			.right_timu_list{
+				margin-top: 15px;
+			}
+			.right_timu_list_num {
+				display: flex;
+				flex-wrap: wrap;
+				
+			}
+			.right_timu_list_num span{
+				width: 32px;
+				height: 32px;
+				border-radius: 4px;
+				text-align: center;
+				line-height: 32px;
+				background: #2D8DFF;
+				color: #fff;
+				margin: 12px 20px 12px 0;
+			}
+			.right_timu_list_num span:nth-child(8n){
+				margin-right: 0;
 			}
 		</style>
 	</head>
@@ -212,21 +479,14 @@
 				<div class="container_bottom box_size flex_box">
 					<div class="container_bottom_left">
 						<ul class="select_ul">
-							<li class="active">
-								<i class="el-icon-document"></i>
-								<span>作业总览</span>
-							</li>
-							<li>
-								<i class="el-icon-document-checked"></i>
-								<span>题目讲评</span>
-							</li>
-							<li>
-								<i class="el-icon-user"></i>
-								<span>学生详情</span>
+							<li :class="activeIndex==index?'active':''" v-for="(item,index) in selectList" :key='index' @click="switchTab(index)">
+								<i :class="item.icon"></i>
+								<span>{{item.name}}</span>
 							</li>
 						</ul>
 					</div>
-					<div class="container_bottom_right" style="display: flex;flex-direction: column;justify-content: space-between;">
+					<div class="container_bottom_right" style="display: flex;flex-direction: column;justify-content: space-between;"
+					 v-show="activeIndex==0">
 						<div class="zuoye_zl">
 							<ul>
 								<li>
@@ -257,7 +517,7 @@
 							</div>
 							<div class="zyxq_content">
 								<div class="zyxq_content_l" id="echarts2">
-									
+
 								</div>
 								<div class="zyxq_content_r">
 									<ul>
@@ -279,14 +539,149 @@
 										</li>
 									</ul>
 									<div class="stundet_list">
-										<div class="rank_box" v-for="(item,index) in studentList" :key='index'>
-											<p><span>{{index+1}}</span><span>{{item.name}}</span><span>{{item.num}}分</span></p>
-											<p><span>{{index+1}}</span><span>{{item.name}}</span><span>{{item.num}}分</span></p>
+										<div class="rank_box">
+											<p v-for="(item,index) in oddStudentList" :key='index'>
+												<span v-if="index>1">{{item.rank}}</span>
+												<img v-if="index==0" src="img/icon-medal1.png" style="width: 30px;">
+												<img v-if="index==1" src="img/icon-medal3.png" style="width: 30px;">
+												<span>{{item.name}}</span>
+												<span>{{item.num}}分</span>
+											</p>
+										</div>
+										<div class="rank_box">
+											<p v-for="(item,index) in evenStudentList" :key='index'>
+												<img v-if="index==0" src="img/icon-medal2.png" style="width: 30px;">
+												<span v-if="index>0">{{item.rank}}</span>
+												<span>{{item.name}}</span>
+												<span>{{item.num}}分</span>
+											</p>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+					</div>
+					<div class="container_bottom_right" style="display: flex;justify-content: space-between;" v-if="activeIndex==1">
+						<div class="active2_box_left">
+							<div class="zyxq_title">
+								<span></span><span>作业得分分析</span>
+							</div>
+							<div class="problem_box">
+								<div style="height: 100%;">
+
+
+									<div class="problem_list" v-for="(item,index) in problemList" :key='index'>
+										<p>{{item.title}}</p>
+										<div class="options_list" v-for="(opt,val) in item.array">
+											<div class="progress_box">
+												<div class="progress_box1">
+													<span>{{val+1}}</span>
+													<el-progress style='width: 100%;' :percentage="opt.progress" :stroke-width='10' :format='defenlv'></el-progress>
+												</div>
+												<span style="color: #2B8CFF;cursor: pointer;" @click="opt.upLoad=!opt.upLoad">作答统计<i style="margin-left: 10px;"
+													 :class="opt.upLoad?'el-icon-arrow-up':'el-icon-arrow-down'"></i></span>
+											</div>
+											<el-collapse-transition>
+												<div class="options_box" v-show="opt.upLoad">
+													<div class="options_box_list" v-for="(obj,i) in opt.options">
+														<span :class="obj.select?'active':''">
+															<span v-if="item.type==0||item.type==1||item.type==4">{{obj.option}}</span>
+															<span v-if="item.type==2">
+																<i :class="obj.option==0?'el-icon-check':'el-icon-close'"></i>
+															</span>
+															<span v-if="item.type==3">
+																<span v-if="obj.option==0">正确</span>
+																<span v-if="obj.option==1">错误</span>
+															</span>
+														</span>
+														<span>{{obj.num}}人</span>
+														<p>{{obj.person}}</p>
+													</div>
+												</div>
+											</el-collapse-transition>
+											<div  v-if='item.type==4'>
+												<div class="result_show">
+													<div class="result_show_box" v-for="(item,index) in resultSelectList" :key='index' @click="item.select=!item.select">
+														<img :src="item.select?item.img2:item.img1"><span :class="item.select?'active':''">{{item.name}}<span style="margin: 0 5px;">({{item.num}}人)</span></span>
+														<i style="color: #A6AAB8;" :class="item.select?'el-icon-caret-top':'el-icon-caret-bottom'"></i>
+													</div>
+												</div>
+												<div class="result_img">
+													<div class="result_img_box">
+														<div class="result_studnet">
+															王江(1/3)
+														</div>
+														<img src="img/answer.png" >
+													</div>
+													<div class="result_img_box">
+														<div class="result_studnet">
+															王江(1/3)
+														</div>
+														<img src="img/answer.png" >
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="active2_box_right">
+							<ul>
+								<li>
+									<p>题目</p>
+									<div class="right_select_content">
+										<div class="right_1" style="display: flex;">
+											<div class="right_1_img">
+												<img src="img/answer.png" >
+											</div>
+											<div class="right_1_img">
+												<img src="img/answer.png" >
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<p>答案</p>
+									<div class="right_select_content">
+										<div class="right_1" style="display: flex;">
+											<div class="right_1_img">
+												<img src="img/answer.png" >
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<p>得分率分组</p>
+									<div class="right_select_content">
+										<ul class="score_box">
+											<li v-for="i in 4">
+												<div class="yanse_box"><span></span><span>优秀</span></div>
+												<div style="color: #A6AAB8;">
+													90%-100%
+												</div>
+											</li>
+										</ul>
+										<div class="right_timu_list">
+											<p class="right_timu_list_title">一、单选题</p>
+											<ul class="right_timu_list_num">
+												<span v-for="item in 14">{{item}}</span>
+											</ul>
+										</div>
+										<div class="right_timu_list">
+											<p class="right_timu_list_title">二、多选题</p>
+											<ul class="right_timu_list_num">
+												<span v-for="item in 4">{{item}}</span>
+											</ul>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="container_bottom_right" style="background: #fff;" v-if="activeIndex==2">
+
 					</div>
 				</div>
 			</div>
@@ -303,54 +698,266 @@
 <script type="text/javascript">
 	var app = new Vue({
 		el: '#app',
-		data:{
+		data: {
+			activeIndex: 0,
+			unFolds: false,
+			defenlv: '80%',
 			options: [{
 				value: '选项1',
 				label: '全部班级'
 			}],
-			studentList:[
-				{
-					name:'张三1',
-					num:88
+			selectList: [{
+					icon: 'el-icon-document',
+					name: '作业总览'
 				},
 				{
-					name:'张三2',
-					num:88
+					icon: 'el-icon-document-checked',
+					name: '题目讲评'
 				},
 				{
-					name:'张三3',
-					num:88
-				},
-				{
-					name:'张三4',
-					num:88
-				},
-				{
-					name:'张三5',
-					num:88
-				},
-				{
-					name:'张三6',
-					num:88
-				},
-				{
-					name:'张三7',
-					num:88
-				},
-				{
-					name:'张三8',
-					num:88
-				},
-				{
-					name:'张三9',
-					num:88
+					icon: 'el-icon-user',
+					name: '学生详情'
 				}
 			],
-			value:''
+			resultSelectList: [{
+					img1: 'img/icon-yxzd.png',
+					img2: 'img/icon-yxzd1.png',
+					name: '优秀作答',
+					num: 3,
+					select: false
+				},
+				{
+					img1: 'img/icon-dxcw.png',
+					img2: 'img/icon-dxcw1.png',
+					name: '典型错误',
+					num: 3,
+					select: false
+				}
+			],
+			problemList: [{
+					title: '一、单选题',
+					type: 0,
+					array: [{
+							progress: 50,
+							upLoad: true,
+							select: 'A',
+							options: [{
+									option: 'A',
+									num: 17,
+									select: true,
+									person: '张三 李四 王五 张三 李四 王五 张三 李四 王五 张三 李四 王五 张三 李四 王五 张三 李四'
+								},
+								{
+									option: 'B',
+									num: 6,
+									select: false,
+									person: '张三 李四 王五 张三 李四 王五 张三'
+								},
+								{
+									option: 'C',
+									num: 6,
+									select: false,
+									person: '张三 李四 王五 张三 李四 王五'
+								},
+								{
+									option: 'D',
+									num: 4,
+									select: false,
+									person: '张三 李四 王五 张三'
+								}
+							]
+						},
+						{
+							progress: 90,
+							upLoad: false,
+							select: 'A',
+							options: [{
+									option: 'A',
+									num: 17,
+									select: false,
+									person: '张三 李四 王五 张三 李四 王五 张三 李四 王五 张三 李四 王五 张三 李四 王五 张三 李四'
+								},
+								{
+									option: 'B',
+									num: 6,
+									select: true,
+									person: '张三 李四 王五 张三 李四 王五 张三'
+								},
+								{
+									option: 'C',
+									num: 6,
+									select: false,
+									person: '张三 李四 王五 张三 李四 王五'
+								},
+								{
+									option: 'D',
+									num: 4,
+									select: false,
+									person: '张三 李四 王五 张三'
+								}
+							]
+						}
+					]
+				},
+				{
+					title: '二、多选题',
+					type: 1,
+					array: [{
+						progress: 50,
+						upLoad: false,
+						select: 'A',
+						options: [{
+								option: 'A',
+								num: 17,
+								select: true,
+								person: '张三 李四 王五 张三 李四 王五 张三 李四 王五 张三 李四 王五 张三 李四 王五 张三 李四'
+							},
+							{
+								option: 'B',
+								num: 6,
+								select: true,
+								person: '张三 李四 王五 张三 李四 王五 张三'
+							},
+							{
+								option: 'C',
+								num: 6,
+								select: false,
+								person: '张三 李四 王五 张三 李四 王五'
+							},
+							{
+								option: 'D',
+								num: 4,
+								select: false,
+								person: '张三 李四 王五 张三'
+							}
+						]
+					}]
+				},
+				{
+					title: '三、判断题',
+					type: 2,
+					array: [{
+						progress: 50,
+						upLoad: false,
+						select: 'A',
+						options: [{
+								option: '0',
+								num: 17,
+								select: true,
+								person: '张三 李四 王五 张三 李四 王五 张三 李四 王五 张三 李四 王五 张三 李四 王五 张三 李四'
+							},
+							{
+								option: '1',
+								num: 6,
+								select: false,
+								person: '张三 李四 王五 张三 李四 王五 张三'
+							},
+						]
+					}]
+				},
+				{
+					title: '四、填空题',
+					type: 3,
+					array: [{
+						progress: 50,
+						upLoad: false,
+						select: 'A',
+						options: [{
+								option: '0',
+								num: 17,
+								select: true,
+								person: '张三 李四 王五 张三 李四 王五 张三 李四 王五 张三 李四 王五 张三 李四 王五 张三 李四'
+							},
+							{
+								option: '1',
+								num: 6,
+								select: false,
+								person: '张三 李四 王五 张三 李四 王五 张三'
+							},
+						]
+					}]
+				},
+				{
+					title: '五、简答题',
+					type: 4,
+					array: [{
+						progress: 50,
+						upLoad: false,
+						select: 'A',
+						options: [{
+								option: '9-10',
+								num: 17,
+								select: false,
+								person: '张三 李四 王五 张三 李四 王五 张三 李四 王五 张三 李四 王五 张三 李四 王五 张三 李四'
+							},
+							{
+								option: '10-11',
+								num: 6,
+								select: false,
+								person: '张三 李四 王五 张三 李四 王五 张三'
+							},
+						]
+					}]
+				}
+			],
+			studentList: [{
+					name: '张三1',
+					num: 88
+				},
+				{
+					name: '张三2',
+					num: 88
+				},
+
+				{
+					name: '张三3',
+					num: 88
+				},
+				{
+					name: '张三3',
+					num: 88
+				},
+				{
+					name: '张三3',
+					num: 88
+				},
+				{
+					name: '张三3',
+					num: 88
+				}
+			],
+			value: ''
 		},
-		mounted(){
+		computed: {
+			oddStudentList() {
+				var that = this
+				return this.studentList.filter(function(item, index) {
+					if (index % 2 == 0) {
+						item.rank = index + 1
+					}
+					return index % 2 == 0
+				})
+			},
+			evenStudentList() {
+				return this.studentList.filter(function(item, index) {
+					if (index % 2 != 0) {
+						item.rank = index + 1
+					}
+					return index % 2 != 0
+				})
+			}
+		},
+		watch: {
+			oddStudentList(val) {
+				console.log('val1', val)
+			},
+			evenStudentList(val) {
+				console.log('val2', val)
+			}
+		},
+		mounted() {
 			var myChart = echarts.init(document.getElementById('echarts2'));
-			var colorList =['#2D8DFF','#48D0C8', '#FFAB2D', '#B8C6DC']
+			var colorList = ['#2D8DFF', '#48D0C8', '#FFAB2D', '#B8C6DC']
 			let option = {
 				xAxis: {
 					type: 'category',
@@ -367,7 +974,7 @@
 				grid: {
 					left: '1%',
 					right: '1%',
-					bottom:'5%',
+					bottom: '5%',
 					containLabel: true
 				},
 				yAxis: {
@@ -379,18 +986,18 @@
 						show: true //隐藏或显示
 					},
 					axisLine: {
-			
+
 						show: false //y轴线消失
-			
+
 					},
 					axisTick: {
-			
+
 						show: false //y轴坐标点消失
-			
+
 					},
 				},
 				series: [{
-			
+
 					data: [120, 200, 150, 80],
 					type: 'bar',
 					barWidth: 40,
@@ -402,22 +1009,32 @@
 						}
 					},
 					label: {
-			
+
 						normal: {
-			
+
 							show: true,
-			
+
 							position: 'top',
-			
+
 							formatter: '{c}人'
-			
+
 						}
-			
+
 					}
 				}]
 			};
 			myChart.setOption(option);
 			// myChart.setOption(option);
+		},
+		methods: {
+			switchTab(e) {
+				this.activeIndex = e
+			},
+			unFold(e) {
+
+				e = !e
+				console.log(e)
+			}
 		}
 	})
 </script>
