@@ -363,28 +363,32 @@
 				width: 20px;
 				margin-right: 5px;
 			}
-			.result_show_box{
-				
-			}
-			.result_show_box span:nth-child(2).active{
+
+			.result_show_box {}
+
+			.result_show_box span:nth-child(2).active {
 				color: #2D8DFF;
 			}
-			.result_img{
+
+			.result_img {
 				margin-top: 20px;
 				box-sizing: border-box;
 				padding-left: 30px;
 				display: flex;
 			}
-			.result_img_box{
+
+			.result_img_box {
 				position: relative;
 				margin-right: 20px;
 			}
-			.result_img_box img{
+
+			.result_img_box img {
 				width: 268px;
 				height: 201px;
-				
+
 			}
-			.result_studnet{
+
+			.result_studnet {
 				width: 114px;
 				height: 32px;
 				text-align: center;
@@ -394,59 +398,72 @@
 				background: rgba(0, 0, 0, 0.5);
 				border-radius: 4px 0px 16px;
 			}
-			.active2_box_right ul li p{
+
+			.active2_box_right ul li p {
 				font-size: 20px;
 			}
-			.right_select_content{
+
+			.right_select_content {
 				box-sizing: border-box;
 				padding: 15px 0 30px 0;
 			}
-			.right_1{
+
+			.right_1 {
 				display: flex;
-				
+
 			}
-			.right_1_img{
+
+			.right_1_img {
 				border: 1px solid #ECEEF0;
 				margin-right: 15px;
 			}
-			.right_1 img{
+
+			.right_1 img {
 				width: 200px;
 				height: 150px;
 				display: block;
 			}
-			.right_1_img:nth-last-child(-n+1){
+
+			.right_1_img:nth-last-child(-n+1) {
 				margin: 0;
 			}
-			.score_box{
+
+			.score_box {
 				display: flex;
 				justify-content: space-between;
 			}
-			.score_box li{
+
+			.score_box li {
 				display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			
+				flex-direction: column;
+				align-items: flex-start;
+
 			}
-			.yanse_box{
+
+			.yanse_box {
 				display: flex;
 				align-items: center;
 				margin-bottom: 5px;
 			}
-			.yanse_box span:nth-child(1){
+
+			.yanse_box span:nth-child(1) {
 				width: 12px;
 				height: 12px;
 				background: #2D8DFF;
 				margin-right: 5px;
 			}
-			.right_timu_list{
+
+			.right_timu_list {
 				margin-top: 15px;
 			}
+
 			.right_timu_list_num {
 				display: flex;
 				flex-wrap: wrap;
-				
+
 			}
-			.right_timu_list_num span{
+
+			.right_timu_list_num span {
 				width: 32px;
 				height: 32px;
 				border-radius: 4px;
@@ -456,9 +473,18 @@
 				color: #fff;
 				margin: 12px 20px 12px 0;
 			}
-			.right_timu_list_num span:nth-child(8n){
+
+			.right_timu_list_num span:nth-child(8n) {
 				margin-right: 0;
 			}
+
+			.pagination_box {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-top: 30px;
+			}
+			
 		</style>
 	</head>
 	<body>
@@ -599,10 +625,11 @@
 													</div>
 												</div>
 											</el-collapse-transition>
-											<div  v-if='item.type==4'>
+											<div v-if='item.type==4'>
 												<div class="result_show">
 													<div class="result_show_box" v-for="(item,index) in resultSelectList" :key='index' @click="item.select=!item.select">
-														<img :src="item.select?item.img2:item.img1"><span :class="item.select?'active':''">{{item.name}}<span style="margin: 0 5px;">({{item.num}}人)</span></span>
+														<img :src="item.select?item.img2:item.img1"><span :class="item.select?'active':''">{{item.name}}<span
+															 style="margin: 0 5px;">({{item.num}}人)</span></span>
 														<i style="color: #A6AAB8;" :class="item.select?'el-icon-caret-top':'el-icon-caret-bottom'"></i>
 													</div>
 												</div>
@@ -611,17 +638,17 @@
 														<div class="result_studnet">
 															王江(1/3)
 														</div>
-														<img src="img/answer.png" >
+														<img src="img/answer.png">
 													</div>
 													<div class="result_img_box">
 														<div class="result_studnet">
 															王江(1/3)
 														</div>
-														<img src="img/answer.png" >
+														<img src="img/answer.png">
 													</div>
 												</div>
 											</div>
-											
+
 										</div>
 									</div>
 								</div>
@@ -634,10 +661,10 @@
 									<div class="right_select_content">
 										<div class="right_1" style="display: flex;">
 											<div class="right_1_img">
-												<img src="img/answer.png" >
+												<img src="img/answer.png">
 											</div>
 											<div class="right_1_img">
-												<img src="img/answer.png" >
+												<img src="img/answer.png">
 											</div>
 										</div>
 									</div>
@@ -647,7 +674,7 @@
 									<div class="right_select_content">
 										<div class="right_1" style="display: flex;">
 											<div class="right_1_img">
-												<img src="img/answer.png" >
+												<img src="img/answer.png">
 											</div>
 										</div>
 									</div>
@@ -680,8 +707,41 @@
 							</ul>
 						</div>
 					</div>
-					<div class="container_bottom_right" style="background: #fff;" v-if="activeIndex==2">
-
+					<div class="container_bottom_right" style="background: #fff;box-sizing: border-box;padding: 15px;" v-if="activeIndex==2">
+						<div class="zyxq_title">
+							<span></span><span>作业得分分析</span>
+						</div>
+						<el-table :data="tableData" style="width: 100%;margin-top: 15px;" :cell-style="cellClass" :header-cell-style="headClass">
+							<el-table-column prop="rank" label="排名" width="180">
+								<template slot-scope="scope">
+									<span v-if="scope.row.rank>3">
+										{{scope.row.rank}}
+									</span>
+									<img style="width: 20px;" v-if="scope.row.rank==1" src="img/icon-medal1.png">
+									<img style="width: 20px;" v-if="scope.row.rank==2" src="img/icon-medal2.png">
+									<img style="width: 20px;" v-if="scope.row.rank==3" src="img/icon-medal3.png">
+								</template>
+							</el-table-column>
+							<el-table-column prop="name" label="姓名" width="180">
+							</el-table-column>
+							<el-table-column prop="num" label="得分">
+							</el-table-column>
+							<el-table-column prop="useTime" label="用时">
+							</el-table-column>
+							<el-table-column prop="createdTime" label="提交日期">
+							</el-table-column>
+							<el-table-column label="更多">
+								<template slot-scope="scope">
+									<span style="color: #2D8DFF;cursor: pointer;">
+										查看详情<i class="el-icon-arrow-right"></i>
+									</span>
+								</template>
+							</el-table-column>
+						</el-table>
+						<div class="pagination_box">
+							<el-pagination background layout="prev, pager, next" :total="1000">
+							</el-pagination>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -717,6 +777,77 @@
 				{
 					icon: 'el-icon-user',
 					name: '学生详情'
+				}
+			],
+			tableData: [{
+					rank: 1,
+					name: '张三',
+					num: 98,
+					useTime: "00'52 ''",
+					createdTime: '2020-12-31'
+				},
+				{
+					rank: 2,
+					name: '张三',
+					num: 98,
+					useTime: "00'52 ''",
+					createdTime: '2020-12-31'
+				},
+				{
+					rank: 3,
+					name: '张三',
+					num: 98,
+					useTime: "00'52 ''",
+					createdTime: '2020-12-31'
+				},
+				{
+					rank: 4,
+					name: '张三',
+					num: 98,
+					useTime: "00'52 ''",
+					createdTime: '2020-12-31'
+				},
+				{
+					rank: 5,
+					name: '张三',
+					num: 98,
+					useTime: "00'52 ''",
+					createdTime: '2020-12-31'
+				},
+				{
+					rank: 6,
+					name: '张三',
+					num: 98,
+					useTime: "00'52 ''",
+					createdTime: '2020-12-31'
+				},
+				{
+					rank: 7,
+					name: '张三',
+					num: 98,
+					useTime: "00'52 ''",
+					createdTime: '2020-12-31'
+				},
+				{
+					rank: 8,
+					name: '张三',
+					num: 98,
+					useTime: "00'52 ''",
+					createdTime: '2020-12-31'
+				},
+				{
+					rank: 9,
+					name: '张三',
+					num: 98,
+					useTime: "00'52 ''",
+					createdTime: '2020-12-31'
+				},
+				{
+					rank: 10,
+					name: '张三',
+					num: 98,
+					useTime: "00'52 ''",
+					createdTime: '2020-12-31'
 				}
 			],
 			resultSelectList: [{
@@ -1031,9 +1162,15 @@
 				this.activeIndex = e
 			},
 			unFold(e) {
-
 				e = !e
-				console.log(e)
+			},
+			//背景色
+			headClass() {
+				return "background-color:#F7F8FA;color:#000000;text-align: center;";
+			},
+			//居中
+			cellClass() {
+				return 'text-align: center;'
 			}
 		}
 	})
